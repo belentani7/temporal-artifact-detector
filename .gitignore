@@ -160,3 +160,7 @@ Thumbs.db
 *.pt
 *.onnx
 *.pb
+.pytest_cache/
+*.egg-info/
+.coverage/
+htmlcov/
