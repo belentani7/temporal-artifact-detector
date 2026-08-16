@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "temporal-artifact-detector"
+version = "0.1.0"
+description = "Detect flickering and temporal artifacts in AI-generated videos"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Temporal Artifact Detector Contributors"}
+]
+keywords = ["video", "ai", "artifacts", "flickering", "temporal", "detection"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+]
+dependencies = [
+    "numpy>=1.21.0",
+    "opencv-python>=4.5.0",
+    "scikit-image>=0.19.0",
+]
+
+[project.optional-dependencies]
+ml = [
+    "torch>=1.9.0",
+    "torchvision>=0.10.0",
+    "facenet-pytorch>=2.5.0",
+    "lpips>=0.1.4",
+]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+tad = "detector.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/temporal-artifact-detector/temporal-artifact-detector"
+Repository = "https://github.com/temporal-artifact-detector/temporal-artifact-detector"
+Issues = "https://github.com/temporal-artifact-detector/temporal-artifact-detector/issues"
+
+[tool.setuptools.packages.find]
+include = ["detector*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
